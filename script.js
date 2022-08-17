@@ -9,16 +9,6 @@ let respostaCorreta = WORDS[Math.floor(Math.random() * WORDS.length)] //sorteia 
 console.log(respostaCorreta) //mostra a palavra certa só para teste
 
 
-
-function deleteLetter () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
-    let box = row.children[nextLetter - 1]
-    box.textContent = ""
-    box.classList.remove("filled-box")
-    currentGuess.pop()
-    nextLetter -= 1
-}
-
 function checkGuess () {
     let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
     let guessString = ''
@@ -132,19 +122,4 @@ document.addEventListener("keyup", (e) => {
     } else {
         insertLetter(pressedKey)
     }
-})
-
-document.getElementById("keyboard-cont").addEventListener("click", (e) => {
-    const target = e.target
-    
-    if (!target.classList.contains("keyboard-button")) {
-        return
-    }
-    let key = target.textContent
-
-    if (key === "Del") {
-        key = "Backspace"
-    } 
-
-    document.dispatchEvent(new KeyboardEvent("keyup", {'key': key}))
 })
