@@ -1,4 +1,4 @@
-export const WORDS = [
+const WORDS = [
         'sagaz',
         'negro',
         'mexer',
@@ -8,7 +8,6 @@ export const WORDS = [
         'algoz',
         'afeto',
         'plena',
-        'tênue',
         'sutil',
         'vigor',
         'fazer',
@@ -26,7 +25,6 @@ export const WORDS = [
         'muito',
         'justo',
         'honra',
-        'fútil',
         'sobre',
         'anexo',
         'etnia',

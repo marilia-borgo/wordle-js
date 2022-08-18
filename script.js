@@ -1,7 +1,7 @@
-import { WORDS } from "./words.js"; // importa as palavras
 
-const NUMBER_OF_GUESSES = 6; //quantas vezes eu posso adivinhar
-let guessesRemaining = NUMBER_OF_GUESSES; //no inicio sempre sobrarao seis chances
+
+const   TENTATIVAS = 6; //quantas vezes eu posso adivinhar
+let guessesRemaining =  TENTATIVAS; //no inicio sempre sobrarao seis chances
 let currentGuess = []; // lista vazia para a quantidade de vezes que eu posso adivinhar
 let nextLetter = 0;
 let respostaCorreta = WORDS[Math.floor(Math.random() * WORDS.length)] //sorteia uma palavra da lista
@@ -10,27 +10,28 @@ console.log(respostaCorreta) //mostra a palavra certa só para teste
 
 
 function checkGuess () {
-    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining]
-    let guessString = ''
-    let rightGuess = Array.from(respostaCorreta)
+    let row = document.getElementsByClassName("letter-row")[6 - guessesRemaining] //pega as letras da div
+    let guessString = '' //inicia a variavel vazia
+    let respostaCertaArray = Array.from(respostaCorreta) //transforma a palavra corrtea em uma string
 
     for (const val of currentGuess) {
-         guessString += val
+         guessString += val //vai adicionando as letras
     }
-
+//incia o loop para verificação
     for (let i = 0; i < 5; i++) {
         let letterColor = ''
-        let box = row.children[i]
-        let letter = currentGuess[i]
+        let box = row.children[i] //só pode ser cinco valores
+        let letter = currentGuess[i]  //cada letra dentro da lista
         
-        let letterPosition = rightGuess.indexOf(currentGuess[i])
+        let letterPosition = respostaCertaArray.indexOf(currentGuess[i])
         // is letter in the correct guess
+        //-1 é do indexof() retorna -1 se não existe no array
         if (letterPosition === -1) {
-            letterColor = 'grey'
+            letterColor = 'gray'
         } else {
             // nesse else a letra esta na mesma palavra
             //o index da palavra certa e da tentativa tem de ser o mesmo
-            if (currentGuess[i] === rightGuess[i]) {
+            if (currentGuess[i] === respostaCertaArray[i]) {
                 // troca a classe para verde
                 letterColor = 'green'
             } else {
@@ -38,7 +39,7 @@ function checkGuess () {
                 letterColor = 'yellow'
             }
 
-            rightGuess[letterPosition] = "#"
+            respostaCertaArray[letterPosition] = "#"
         }
 
         let delay = 100 * i
